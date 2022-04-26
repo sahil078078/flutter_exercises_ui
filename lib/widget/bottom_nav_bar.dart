@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../constants.dart';
+
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({
     Key? key,
@@ -9,12 +11,32 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(
+        left: 20,
+        right: 20,
+        bottom: 10,
+      ),
       padding: const EdgeInsets.symmetric(
         horizontal: 40,
         vertical: 10,
       ),
       height: 80,
-      color: Colors.white,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            offset: const Offset(3, 8),
+            blurRadius: 35,
+            color: Colors.grey.withOpacity(0.8),
+          ),
+          const BoxShadow(
+            offset: Offset(-5, -12),
+            blurRadius: 35,
+            color: Colors.white,
+          )
+        ],
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

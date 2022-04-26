@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_exercises_ui/constants.dart';
+import 'package:flutter_exercises_ui/screens/detail_screen.dart';
 import 'package:flutter_exercises_ui/widget/bottom_nav_bar.dart';
 import 'package:flutter_exercises_ui/widget/category_card.dart';
+import 'package:flutter_exercises_ui/widget/search_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
@@ -75,24 +78,7 @@ class HomeScreen extends StatelessWidget {
                           fontSize: 30,
                         ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 30),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                      vertical: 5,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(29.5),
-                    ),
-                    child: TextField(
-                      decoration: InputDecoration(
-                          icon: SvgPicture.asset('assets/icons/search.svg'),
-                          border: InputBorder.none,
-                          hintText: 'Search',
-                          hintStyle: Theme.of(context).textTheme.bodyText1),
-                    ),
-                  ),
+                  const SearchBar(),
                   Expanded(
                     child: GridView.count(
                       childAspectRatio: 0.85,
@@ -113,7 +99,14 @@ class HomeScreen extends StatelessWidget {
                         CategoryCard(
                           svgSrc: 'assets/icons/Meditation.svg',
                           title: 'Meditation',
-                          press: () {},
+                          press: () {
+                            Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (context) => const DetailsScreen(),
+                              ),
+                            );
+                          },
                         ),
                         CategoryCard(
                           svgSrc: 'assets/icons/yoga.svg',
@@ -133,5 +126,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
